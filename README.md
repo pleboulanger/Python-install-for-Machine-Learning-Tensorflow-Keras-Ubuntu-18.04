@@ -1,4 +1,4 @@
-# Python install for Machine Learning Tensorflow Keras Ubuntu 18.04
+# Python install for Machine Learning Tensorflow Keras Ubuntu 18.04 (In development)
 Python install for Machine Learning Tensorflow Keras Ubuntu 18.04 (CPU)
 
 ###### What you will need :
@@ -8,34 +8,48 @@ Python install for Machine Learning Tensorflow Keras Ubuntu 18.04 (CPU)
 
 Hello! This post will aim at installing Python for Machine Learning with Keras on Ubuntu 18.04.
 At the end of this tutorial you will have installed the following:
-- Python 3.5
-- Pip
-- Tensorflow
-- Keras
+- Docker
+- Tensorflow Docker image including keras
 
-First, we need to install Python 3.5.2.
-Go to https://www.python.org/downloads/release/python-352/ and download the Windows x86-64 executable installer.
+First, we need to install Docker.
+Go to https://docs.docker.com/install/ and download the Docker CE for Ubuntu.
 
 Install the program.
 
-Open a Windows Terminal from Start >> All Programs >> Accessories >> Command Prompt and right click and choose "Run as administrator"
+Open a terminal
+Run
+>docker run --runtime=nvidia -rm -it -p 8888:8888 tensorflow/tensorflow:latest
 
-Check Python version by typing 
->python --version
+You will have some lines saying that you launched a Jupyter server and giving a token like this: .
 
-It should read "Python 3.5.2".
+Enter the following address in a web browser
+>localhost:8888
 
-Locate the python.exe file by typing python.exe in Start >> "Search programms and files" and right click on python and choose Properties. Copy the Location field.
-In the command prompt, type cd\ and paste the path to python.exe
+You will be asked to enter your token.
 
-Now install and upgrade pip (a Python package manager) by entering the following command
->python.exe -m pip install --upgrade pip
+Once it is done, you're good to go inside your Jupyter Notebook!
 
-Once it is done, install Tensorflow by typing
->pip install --upgrade tensorflow
 
-Then install Keras with
->pip install --upgrade keras
+You can try to run the following "hello world"
+```
+import tensorflow as tf
+mnist = tf.keras.datasets.mnist
 
-Once it is done, you're good to go!
-If you want an IDE in order to write your code, you can get PyCharm Community from https://www.jetbrains.com/pycharm/download/#section=windows
+(x_train, y_train),(x_test, y_test) = mnist.load_data()
+x_train, x_test = x_train / 255.0, x_test / 255.0
+
+model = tf.keras.models.Sequential([
+  tf.keras.layers.Flatten(),
+  tf.keras.layers.Dense(512, activation=tf.nn.relu),
+  tf.keras.layers.Dropout(0.2),
+  tf.keras.layers.Dense(10, activation=tf.nn.softmax)
+])
+model.compile(optimizer='adam',
+              loss='sparse_categorical_crossentropy',
+              metrics=['accuracy'])
+
+model.fit(x_train, y_train, epochs=5)
+model.evaluate(x_test, y_test)
+```
+###### Sources :
+https://www.tensorflow.org/install/docker
