@@ -12,7 +12,7 @@ At the end of this tutorial you will have installed the following:
 - Tensorflow Docker image including keras
 
 First, we need to install Docker.
-Go to https://docs.docker.com/install/ and download the Docker CE for Ubuntu.
+Go to https://docs.docker.com/install/ and download the Docker CE (Community Edition) for Ubuntu. Direct link to Ubuntu install: https://docs.docker.com/install/linux/docker-ce/ubuntu/#os-requirements.
 
 Install the program.
 
