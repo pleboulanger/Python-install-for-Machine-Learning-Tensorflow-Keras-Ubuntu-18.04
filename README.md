@@ -1,4 +1,4 @@
-# Python install for Machine Learning Tensorflow Keras Ubuntu 18.04 (In development)
+# Python install for Machine Learning Tensorflow Keras Ubuntu 18.04 CPU (In development)
 Python install for Machine Learning Tensorflow Keras Ubuntu 18.04 (CPU)
 
 ###### What you will need :
