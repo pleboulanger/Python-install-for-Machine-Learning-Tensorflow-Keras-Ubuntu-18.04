@@ -18,7 +18,7 @@ Install the program.
 
 Open a terminal
 Run
->docker run --runtime=nvidia --rm -it -p 8888:8888 tensorflow/tensorflow:latest-py3
+>docker run --rm -it -p 8888:8888 tensorflow/tensorflow-py3
 
 You will have some lines saying that you launched a Jupyter server and giving a token like this:
 http://127.0.0.1:8888/?token=1cf746371223c18dff95a99b4dfb7db57e14a1528e5c78e
